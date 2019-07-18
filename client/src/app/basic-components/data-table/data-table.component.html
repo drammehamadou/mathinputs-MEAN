@@ -1,0 +1,24 @@
+<div class="table-responsive-md">
+  <table class="table table-striped boxed">
+    <thead>
+      <tr>
+        <th scope="col" *ngIf="yLabels">#</th>
+        <th scope="col"
+            *ngFor="let xLabel of xLabels"
+            title="{{xLabel}}">{{ xLabel }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of data; let i = index">
+        <th scope="row" *ngIf="yLabels" title="{{yLabels[i]}}">{{ yLabels[i] }}</th>
+        <td scope="col" *ngFor="let cell of row">
+          <div *ngIf="isButton(cell); else normal">
+            <button type="button" class="btn btn-primary"
+                    (click)="cell.action(row)">{{ cell.name }}</button>
+          </div>
+          <ng-template #normal>{{ cell }}</ng-template>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

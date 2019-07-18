@@ -1,0 +1,23 @@
+<div class="numeric-input input-group">
+  <div class="input-group-prepend" *ngIf="name">
+    <span class="input-group-text">{{ name }}</span>
+  </div>
+  <input title="Number Input" type="number" class="form-control"
+         (change)="onVariableChange()"
+         [readonly]="readOnly"
+         [(ngModel)]="variable">
+  <div class="input-group-append" *ngIf="!units && unit">
+    <button class="btn btn-outline-secondary" type="button">{{ unit }}</button>
+  </div>
+  <div ngbDropdown class="input-group-append" *ngIf="units">
+    <button ngbDropdownToggle class="btn btn-outline-secondary dropdown-toggle" id="unitDropdown"
+            [disabled]="readOnly">
+      {{ unit || 'Unit' }}
+    </button>
+    <ul ngbDropdownMenu aria-labelledby="unitDropdown" class="dropdown-menu">
+      <li class="dropdown-item"
+          (click)="onUnitSelect(u)"
+          *ngFor="let u of units">{{ u }}</li>
+    </ul>
+  </div>
+</div>

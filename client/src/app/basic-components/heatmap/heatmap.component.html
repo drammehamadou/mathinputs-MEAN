@@ -1,0 +1,19 @@
+<div class="heatmap table-responsive-md">
+  <table class="table boxed">
+    <thead>
+      <tr>
+        <th scope="col" class="titles" *ngIf="yLabels || xTitle || yTitle || xUnit || yUnit">{{ getTitles() }}</th>
+        <th scope="col" *ngFor="let label of xLabels">{{ label }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of values; let i = index">
+        <th scope="row" *ngIf="yLabels || xTitle || yTitle || xUnit || yUnit">{{ getYLabel(i) }}</th>
+        <td *ngFor="let val of row" [ngStyle]="{'background': getColor(val)}">
+          <span *ngIf="showValues">{{ val }}</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+

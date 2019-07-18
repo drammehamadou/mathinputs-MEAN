@@ -1,0 +1,32 @@
+.paragraph {
+  margin: 5px;
+}
+
+.paragraph-header {
+  cursor: pointer;
+  line-height: 2.5em;
+}
+
+.paragraph-footer {
+  padding: 2px 20px;
+  line-height: 20px;
+  color: #aaa;
+  border: none;
+}
+
+.import-export {
+  float: right;
+
+  span {
+    cursor: pointer;
+    font-size: 13px;
+
+    &:hover {
+      color: #064CDB;
+    }
+  }
+}
+
+input[type="file"] {
+  display: none;
+}

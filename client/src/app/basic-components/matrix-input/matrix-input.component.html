@@ -1,0 +1,62 @@
+<div class="container">
+  <!--Row of delete column buttons-->
+  <div class="row delete-col-row"
+       [ngClass]="{'ml-2': canAddRows()}"
+       *ngIf="canAddCols()">
+    <div class="col" *ngFor="let col of range(0, cols)">
+      <button type="button" aria-label="Delete"
+              id="matrix-delete-col"
+              class="close delete-button"
+              [ngClass]="{'hide': cols == 1}"
+              (click)="onRemoveCol(col)">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </div>
+  <!--Rows loop-->
+  <div id="matrix-row" class="row" *ngFor="let row of range(0, rows)">
+    <!--Row of delete row buttons-->
+    <button type="button" aria-label="Delete"
+            id="matrix-delete-row"
+            class="close delete-button"
+            *ngIf="canAddRows()"
+            [ngClass]="{'hide': rows == 1}"
+            (click)="onRemoveRow(row)">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <!--Columns loop-->
+    <div id="matrix-cell" class="col" *ngFor="let col of range(0, cols)">
+      <input title="Matrix Cell Input" type="number" class="form-control"
+             (change)="onValuesChange()"
+             [(ngModel)]="values[row][col]"
+             [readonly]="readOnly">
+    </div>
+  </div>
+  <!--Row of add buttons-->
+  <div class="row">
+    <div class="col ml-1">
+      <span class="add ml-3"
+            id="matrix-add-row"
+            (click)="onAddRow()"
+            *ngIf="canAddRows()">+ Add row</span>
+      <span class="add"
+            id="matrix-add-col"
+            [ngClass]="{'ml-4': canAddRows()}"
+            (click)="onAddColumn()"
+            *ngIf="canAddCols()">+ Add column</span>
+    </div>
+    <div class="col" *ngIf="units">
+      <div ngbDropdown placement="bottom-right" class="input-group-append float-right">
+        <button ngbDropdownToggle class="btn btn-outline-secondary dropdown-toggle" id="unitDropdown"
+                [disabled]="readOnly">
+          {{ unit || 'Unit' }}
+        </button>
+        <ul ngbDropdownMenu aria-labelledby="unitDropdown" class="dropdown-menu">
+          <li class="dropdown-item"
+              (click)="onUnitSelect(u)"
+              *ngFor="let u of units">{{ u }}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,7 @@
+<div *ngIf="paragraphTree">
+  <ul class="nav flex-column toc">
+    <li *ngFor="let root of paragraphTree.roots">
+      <cae-table-of-contents-group [node]="root"></cae-table-of-contents-group>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,50 @@
+.row {
+  padding-bottom: 10px !important;
+}
+
+.col {
+  padding-left: 5px !important;
+  padding-right: 5px !important;
+}
+
+.ml-md-auto {
+  padding-right: 0 !important;
+}
+
+.delete-col-row {
+  text-align: center;
+
+  .col {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.hide {
+  visibility: hidden;
+}
+
+.delete-button {
+  width: 16px;
+  text-align: center;
+  font-size: 12pt;
+  margin-right: 5px;
+  outline: none;
+}
+
+.add {
+  font-size: 10pt;
+  opacity: 0.5;
+  cursor: pointer;
+
+  color: #064CDB;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.row + .row {
+  margin-top: 0;
+}

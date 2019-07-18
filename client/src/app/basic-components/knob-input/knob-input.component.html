@@ -1,0 +1,12 @@
+<div class="canvas-wrapper"
+     (wheel)="onMouseWheel($event)">
+  <input id="input"
+         #input title=""
+         type="number"
+         [(ngModel)]="variable"
+         (change)="onVariableChange()"
+         [readonly]="readonly">
+  <canvas #canvas
+          (mousedown)="onMouseDown($event)"
+          (click)="onMouseClick($event)"></canvas>
+</div>

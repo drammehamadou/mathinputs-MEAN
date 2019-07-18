@@ -1,0 +1,11 @@
+<div class="custom-control custom-checkbox">
+  <input title="{{title}}"
+         id="{{checkboxId}}"
+         type="checkbox"
+         class="custom-control-input"
+         [(ngModel)]="value"
+         (change)="onChange()">
+  <label class="custom-control-label" for="{{checkboxId}}">
+    {{ title }} <ng-content></ng-content>
+  </label>
+</div>

@@ -1,0 +1,226 @@
+<cae-paragraph title="Setup" name="setup">
+  <cae-vehicle order="0"></cae-vehicle>
+  <cae-paragraph title="Vehicle Architecture" name="arch">
+    <cae-svg [path]="svgPath"
+             [events]="svgEvent.asObservable()"
+             (elementClicked)="onElementClicked($event)"></cae-svg>
+    <cae-checkbox [value]="false" (valueChange)="onChange('frontMotor', $event)"> Front motor</cae-checkbox><br>
+    <cae-checkbox [value]="true" (valueChange)="onChange('wheelMotors', $event)"> Wheel motors</cae-checkbox><br>
+    <cae-checkbox [value]="true" (valueChange)="onChange('frontWheelMotors', $event)"> Front wheel motors</cae-checkbox><br>
+    <cae-checkbox [value]="true" (valueChange)="onChange('backWheelMotors', $event)"> Back wheel motors</cae-checkbox><br>
+    <br>
+    <cae-checkbox [value]="true" (valueChange)="onChange('backLeftWheelMotor', $event)"> Back left wheel motor</cae-checkbox><br>
+    <cae-checkbox [value]="true" (valueChange)="onChange('backRightWheelMotor', $event)"> Back right wheel motor</cae-checkbox><br>
+    <cae-checkbox [value]="true" (valueChange)="onChange('frontLeftWheelMotor', $event)"> Front left wheel motor</cae-checkbox><br>
+    <cae-checkbox [value]="true" (valueChange)="onChange('frontRightWheelMotor', $event)"> Front right wheel motor</cae-checkbox><br>
+    <br>
+  </cae-paragraph>
+  <cae-paragraph title="Powertrain" name="pt">
+    <cae-checkbox>Transfer Box Fitted</cae-checkbox><br>
+    <cae-checkbox>Use single efficiency value</cae-checkbox>
+    <div class="form-group mt-3 col-md-11">
+      <label>Gearbox</label>
+      <cae-data-table [xLabels]="['1', '2', '3', '4', '5']"
+                      [yLabels]="['', 'Ratios', 'Efficiency']"
+                      [data]="[ ['Ratio_1', 'Ratio_2', 'Ratio_3', 'Ratio_4', 'Ratio_5'], [3.974, 2.318, 1.516, 1.149, 0.858], ['95%', '95%', '95%', '95%', '95%'] ]"></cae-data-table>
+    </div>
+    <div class="form-group mt-3 col-md-2">
+      <label>Transfer Box</label>
+      <cae-data-table [xLabels]="['High', 'Low', '']"
+                      [yLabels]="['', 'Ratios', 'Efficiency']"
+                      [data]="[ ['T_Ratio_H', 'T_Ratio_L', {name: 'Click!', action: testFunction}], [1.2, 3.5, {name: 'Click!', action: testFunction}], [1, 1, {name: 'Click!', action: testFunction}] ]"></cae-data-table>
+    </div>
+    <div class="form-group mt-3 col-md-2">
+      <label>Final Drive</label>
+      <cae-data-table [xLabels]="['Ratio']"
+                      [yLabels]="['', 'Ratios', 'Efficiency']"
+                      [data]="[ ['Diff_Ratio_F'], [3.54], [1] ]"></cae-data-table>
+    </div>
+    <div class="form-group mt-3 col-md-11">
+      <label>Electric Motors</label>
+      <cae-data-table [xLabels]="['EM1_base', 'EM2_base', 'EM3_base', 'EM4_base']"
+                      [yLabels]="['Ratios', 'Efficiency']"
+                      [data]="[ [5, 1, 1, 1], [0.95, 1, 1, 1] ]"></cae-data-table>
+    </div>
+  </cae-paragraph>
+  <cae-paragraph title="Sources - Electric" name="se">
+    <div class="form-group">
+      <cae-switch></cae-switch>
+      <label>Extrapolate Parameters from Data</label>
+    </div>
+    <div class="form-group mt-4">
+      <label>Motor Type</label>
+      <div><b>BLDC</b></div>
+    </div>
+    <div class="form-group mt-3">
+      <label>Value</label>
+      <cae-data-table [xLabels]="['Cont', 'Peak', 'Super Peak', null]"
+                      [yLabels]="['Stall Torque', 'Max Speed', 'Rated Power', 'Base Speed', 'Power at Max Speed', 'Duration']"
+                      [data]="[ [182.6, 330, 363, 'Nm'], [7000, 7000, 7000, 'rpm'], [55, 88, 91.3, 'kW'], [3300, 2805, 2640, 'rpm'], [62.25, 64.68, 66.67, 'kW'], [null, 20, 2, 's'] ]"></cae-data-table>
+    </div>
+    <div class="form-group">
+      <label>Battery Details</label>
+      <cae-numeric-input
+        name="Vnom"
+        [variable]="0"
+        [unit]="'V'"
+        [readOnly]="true"></cae-numeric-input>
+      <cae-numeric-input
+        name="Vmax"
+        [variable]="0"
+        [unit]="'V'"
+        [readOnly]="true"></cae-numeric-input>
+      <cae-numeric-input
+        name="Vmin"
+        [variable]="0"
+        [unit]="'V'"
+        [readOnly]="true"></cae-numeric-input>
+      <cae-numeric-input
+        name="Capacity"
+        [variable]="10"
+        [unit]="'kWh'"
+        [readOnly]="true"></cae-numeric-input>
+      <cae-numeric-input
+        name="Weight per Capacity"
+        [variable]="0"
+        [unit]="'kg/Ah'"
+        [readOnly]="true"></cae-numeric-input>
+    </div>
+    <div class="form-group">
+      <label>Regen Details</label>
+      <cae-numeric-input
+        name="Minimum regen speed"
+        [variable]="10.0"
+        [unit]="'km/h'"
+        [readOnly]="true"></cae-numeric-input>
+      <cae-numeric-input
+        name="Power Limit"
+        [variable]="45000"
+        [unit]="'kW'"
+        [readOnly]="true"></cae-numeric-input>
+      <cae-numeric-input
+        name="Torque Limit"
+        [variable]="200"
+        [unit]="'Nm'"
+        [readOnly]="true"></cae-numeric-input>
+    </div>
+    <div class="chart">
+      <cae-chart [y]="[180, 180, 180, 180, 180, 185, 165, 155, 150, 147, 144, 142, 140, 139, 138, 137, 136]"
+                 [x]="[0, 1000, 2000, 2500, 3000, 3010, 3200, 3500, 4000, 4500, 5000, 5500, 6000, 6500, 7000, 7500]"
+                 [xUnit]="'rpm'"
+                 [yUnit]="'Nm'"
+                 [xLabel]="'Speed'" [yLabel]="'Torque'"></cae-chart>
+    </div>
+  </cae-paragraph>
+  <cae-paragraph title="EM Parameters" name="emp">
+    <cae-data-table [xLabels]="['Speed', 'T_cont', 'T_20s', 'T_2s', 'Speed']"
+                    [data]="[ ['rpm', 'Nm', 'Nm', 'Nm', 'rad/s'], [0, 182.6, 330.0, 363, 0], [100, 182.6, 330.0, 363, 10.47198], [200, 182.6, 330.0, 363, 20.94395], [300, 182.6, 330.0, 363, 31.41593] ]"></cae-data-table>
+    <cae-dropdown [(value)]="selectValue" [values]="['Petrol', 'Diesel']"></cae-dropdown>
+    <div class="form-group">
+      <label>Total losses in [kW]</label>
+      <cae-heatmap
+        [values]="[
+          [0.000, 0.001, 0.000, 0.010, 0.1, 0.111, 0.11121, 0.12412],
+          [1.000, 2.000, null, 1.500, 5.000, 5.12512, 5.1241, 5.12515],
+          [10.000, 4.000, 9.000, 15.130, 15.000, 15.124215, 15.1235, 15.11124],
+          [16.100, 16.110, 16.120, 16.130, 16.120, 16.14515, 16.125125, 16.34838]
+        ]"
+        [xLabels]="[0, 10, 20, 30, 40, 50, 60, 70]"
+        [yLabels]="[0, 10, 20]"
+        [yTitle]="'n'" [xTitle]="'M'"
+        [yUnit]="'rpm'" [xUnit]="'Nm'"></cae-heatmap>
+    </div>
+  </cae-paragraph>
+  <cae-paragraph title="ICE Parameters" name="icep">
+    <div class="form-group">
+      <label>Power</label>
+      <cae-numeric-input
+        name="Peak Power"
+        [variable]="92.2"
+        [unit]="'kW'"
+        [readOnly]="true"></cae-numeric-input>
+      <cae-numeric-input
+        name="Peak Torque"
+        [variable]="170"
+        [unit]="'Nm'"
+        [readOnly]="true"></cae-numeric-input>
+      <cae-numeric-input
+        name="Minimum Speed"
+        [variable]="1000"
+        [unit]="'rpm'"
+        [readOnly]="true"></cae-numeric-input>
+      <cae-numeric-input
+        name="Max Speed"
+        [variable]="6300"
+        [unit]="'rpm'"
+        [readOnly]="true"></cae-numeric-input>
+    </div>
+    <div class="chart">
+      <cae-chart [y]="[ [120, 150, 160, 160, 155], [10, 22, 80, 85, 90, 90, 75] ]"
+                 [x]="[1000, 1200, 2000, 5000, 5200, 6000, 6200]"
+                 [xUnit]="'rpm'"
+                 [yUnit]="'Nm'"
+                 [xLabel]="'Speed'" [yLabel]="'Torque'" [y2Label]="'Power'"
+                 [dataNames]="['torque', 'power']"
+                 [axes]="{torque: 'y', power: 'y2'}"></cae-chart>
+    </div>
+  </cae-paragraph>
+</cae-paragraph>
+<cae-paragraph title="Assessment" name="assessment">
+  <cae-paragraph title="Static Driveability-Setup" name="sds">
+    <div class="row">
+      <div class="form-group col-4">
+        <label>Static Condition Distribution - EV</label>
+        <div class="chart">
+          <cae-chart type="scatter"
+                     [y]="[0, 58]"
+                     [x]="[0, 4000]"
+                     [xUnit]="'rpm'"
+                     [yUnit]="'Nm'"
+                     [xLabel]="'Speed'" [yLabel]="'Torque'"></cae-chart>
+        </div>
+      </div>
+      <div class="form-group col-4">
+        <label>Static Point Distribution - Combined</label>
+        <div class="chart">
+          <cae-chart type="scatter"
+                     [y]="[0, 28]"
+                     [x]="[0, 4000]"
+                     [xUnit]="'rpm'"
+                     [yUnit]="'Nm'"
+                     [xLabel]="'Speed'" [yLabel]="'Torque'"></cae-chart>
+        </div>
+      </div>
+      <div class="form-group col-4">
+        <label>Static Point Distribution - ICE</label>
+        <div class="chart">
+          <cae-chart type="scatter"
+                     [y]="[0, 96]"
+                     [x]="[0, 4000]"
+                     [xUnit]="'rpm'"
+                     [yUnit]="'Nm'"
+                     [xLabel]="'Speed'" [yLabel]="'Torque'"></cae-chart>
+        </div>
+      </div>
+    </div>
+    <cae-point-condition [index]="'S1'"
+                         [passed]="true"
+                         [title]="'Const 100km/h'"
+                         [massType]="'GRAD'"></cae-point-condition>
+    <cae-point-condition [index]="'S2'"
+                         [passed]="true"
+                         [title]="'Contributing to 150km/h'"
+                         [massType]="'GRAD'"></cae-point-condition>
+    <cae-point-condition [index]="'S3'"
+                         [passed]="true"
+                         [title]="'Accelerating 3ms-2 at Launch'"
+                         [massType]="'GRAD'"></cae-point-condition>
+
+    <div class="mb-6"></div>
+
+    <cae-acceleration-condition [index]="'A1'"
+                                [passed]="true"
+                                [title]="'0-100kph, 2-up, HEV'"
+                                [massType]="'PREF'"></cae-acceleration-condition>
+  </cae-paragraph>
+</cae-paragraph>

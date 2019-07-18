@@ -1,0 +1,26 @@
+<div class="card paragraph" id="{{name}}" caeScrollSpy>
+  <div class="card-header paragraph-header"
+       [title]="title"
+       (click)="isCollapsed = !isCollapsed"
+       [attr.aria-expanded]="!isCollapsed"
+       aria-controls="cardBody">
+    <b>{{ title }}</b> ({{ formatName() }})
+  </div>
+  <div id="cardBody"
+       #cardBody
+       [ngbCollapse]="isCollapsed">
+    <div class="card-body">
+      <ng-content></ng-content>
+    </div>
+    <div class="card-footer bg-transparent paragraph-footer">
+      <div class="import-export">
+        <span (click)="onExport()">Export</span>
+        &nbsp;|&nbsp;
+        <label for="file-upload-{{name}}" class="custom-file-upload">
+          <span>Import</span>
+        </label>
+        <input id="file-upload-{{name}}" type="file" (change)="onImport($event.target.files)"/>
+      </div>
+    </div>
+  </div>
+</div>

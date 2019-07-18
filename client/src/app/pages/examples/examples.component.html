@@ -1,0 +1,138 @@
+<!--user-profile-->
+<table *ngIf="userDetails" class="table-fill">
+  <thead>
+  <tr>
+    <th colspan="2" class="text-center">User Profile</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>First Name</td>
+    <td>{{userDetails.fullName.split(' ')[0]}}</td>
+  </tr>
+  <tr>
+    <td>Last Name</td>
+    <td>{{userDetails.fullName.split(' ')[1]}}</td>
+  </tr>
+  <tr>
+    <td>Email</td>
+    <td>{{userDetails.email}}</td>
+  </tr>
+  <tr>
+    <td colspan="2" class="text-center">
+      <input type="button" (click)="onLogout()" value="Logout" />
+    </td>
+  </tr>
+  </tbody>
+</table>
+<!--end of user-profile-->
+<section class="py-0">
+  <div class="container-fluid">
+    <div class="row justify-content-between">
+      <aside class="col-lg-2 col-xxl-1 p-3 doc-sidebar">
+        <div #spacerLeft></div>
+        <div stickyThing [spacer]="spacerLeft" [enable]="stickyEnabled">
+          <nav class="navbar navbar-vertical navbar-expand-lg navbar-light mt-2">
+            <div class="text-center">
+              <a class="navbar-brand" href="#">AEPD</a>&nbsp;
+              <div class="badge badge-green">v0.0.1</div>
+              <button class="navbar-toggler" type="button"
+                      data-toggle="collapse"
+                      data-target="#navbarSupportedContent"
+                      aria-controls="navbarSupportedContent"
+                      [attr.aria-expanded]="isMenuCollapsed"
+                      (click)="isMenuCollapsed = !isMenuCollapsed"
+                      aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent"
+                 [ngbCollapse]="!isMenuCollapsed">
+              <ul id="page-nav" class="nav flex-column nav-vertical-2">
+                <li class="nav-item active">
+                  <a class="nav-link" data-toggle="collapse"
+                     role="button"
+                     [attr.aria-expanded]="!isCollapsed"
+                     aria-controls="menu-1"
+                     (click)="isCollapsed = !isCollapsed">Examples</a>
+                  <div class="collapse" id="menu-1" data-parent="#page-nav" [ngbCollapse]="isCollapsed">
+                    <ul class="nav flex-column">
+                      <li class="nav-item">
+                        <a class="nav-item nav-link"
+                           routerLink="/examples/electric-vehicle"
+                           routerLinkActive="active">Electric Vehicle</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-item nav-link"
+                           routerLink="/examples/motor-sizing"
+                           routerLinkActive="active">Motor Sizing</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-item nav-link"
+                           routerLink="/examples/static-and-acceleration-points"
+                           routerLinkActive="active">Static and Acceleration Points</a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+      </aside>
+      <article class="col-lg-10 col-xxl-11 doc-content">
+        <div class="row">
+          <div class="col">
+            <div class="doc-content-header">
+              <div class="row align-items-center">
+                <div class="col">
+                  <nav aria-label="breadcrumb" class="align-items-center">
+                    <ol class="breadcrumb d-none d-lg-inline-flex">
+                      <li class="breadcrumb-item" aria-current="page"
+                          *ngFor="let title of titles; let last = last"
+                          [ngClass]="{'active': last}">{{ title }}</li>
+                    </ol>
+                  </nav>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row justify-content-between doc-content-body">
+          <article class="col-md-9 col-xxl-8">
+            <router-outlet></router-outlet>
+          </article>
+          <aside class="col-md-3 col-xxl-3 d-none d-md-block">
+            <div #spacerRight></div>
+            <div stickyThing [spacer]="spacerRight" class="mt-2">
+              <cae-table-of-contents></cae-table-of-contents>
+            </div>
+          </aside>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+<div class="half bg-transparent to-top-button">
+  <span class="half-bg bg-dark"></span>
+  <div class="container">
+    <div class="row">
+      <div class="col text-center">
+        <a class="btn btn-primary btn-ico btn-lg btn-rounded no-href-a"
+           (click)="scrollToTop()">
+          <i class="icon-arrow-up2 fs-22"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<footer class="bg-dark">
+  <div class="container p-2">
+    <div class="row">
+      <div class="col-12 col-md-6 text-white">
+        <p class="mb-4">Above are examples of implemented components</p>
+      </div>
+    </div>
+  </div>
+</footer>
+

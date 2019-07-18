@@ -1,0 +1,22 @@
+<div style="text-align: center;">Efficiency ({{variables[0].name}})</div>
+<div class="row">
+  <cae-knob-input class="knob"
+                  [name]="variables[0].name"
+                  [variable]="variables[0].value"
+                  (variableChange)="onChange(0, $event)"
+                  [min]="0"
+                  [max]="1"></cae-knob-input>
+</div>
+<br>
+<div style="text-align: center;">Power ({{variables[1].name}})</div>
+<div class="row">
+  <cae-numeric-input class="power-input"
+                     [name]="variables[1].name"
+                     [variable]="variables[1].value"
+                     (variableChange)="onChange(1, $event)"></cae-numeric-input>
+</div>
+<br>
+<div style="text-align: center;">Random Values ({{variables[2].name}})</div>
+<cae-matrix-input [name]="variables[2].name"
+                  [values]="variables[2].value"
+                  (valuesChange)="onChange(2, $event)"></cae-matrix-input>

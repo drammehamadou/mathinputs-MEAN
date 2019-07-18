@@ -1,0 +1,29 @@
+.wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 15px;
+}
+
+.plot-container {
+  width: 60%;
+  height: 100%;
+}
+
+.plot {
+  height: 100%;
+  overflow: visible;
+}
+
+.legend-container {
+  width: 20%;
+  height: 100%;
+}
+
+.legend {
+  display: block;
+  height: 100%;
+  margin: 0 auto;
+  overflow: visible;
+}

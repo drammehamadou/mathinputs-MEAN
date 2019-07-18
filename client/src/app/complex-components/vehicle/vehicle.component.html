@@ -1,0 +1,59 @@
+<cae-paragraph title="Vehicle" name="vehicle" [order]="order">
+  <div class="form-group">
+    <cae-switch [onLabel]="'YES'" [offLabel]="'NO'"></cae-switch>
+    <label>Define CdA</label>
+  </div>
+  <cae-paragraph title="Aerodynamics" name="aero" [variables]="aerodynamicVariables">
+    <cae-numeric-input
+      *ngFor="let av of aerodynamicVariables"
+      [name]="av.name"
+      [(variable)]="av.value"
+      [unit]="av.unit"></cae-numeric-input>
+  </cae-paragraph>
+  <cae-paragraph title="Mass" name="mass" [variables]="massVariables">
+    <div class="form-group"
+         *ngFor="let mv of massVariables">
+      <label>{{ mv.description }}</label>
+      <cae-numeric-input
+        [name]="mv.name"
+        [(variable)]="mv.value"
+        [unit]="mv.unit"></cae-numeric-input>
+    </div>
+  </cae-paragraph>
+  <cae-paragraph title="Wheels" name="wheels" [variables]="wheelsVariables">
+    <div class="form-group">
+      <label>{{ wheelsVariables[0].description }}</label>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">{{ wheelsVariables[0].name }}</span>
+        </div>
+        <input title="Tyre Size Input" type="text" class="form-control"
+               [(ngModel)]="wheelsVariables[0].value">
+      </div>
+    </div>
+    <div class="form-group">
+      <label>{{ wheelsVariables[1].description }}</label>
+      <cae-numeric-input
+        [name]="wheelsVariables[1].name"
+        [(variable)]="wheelsVariables[1].value"
+        [unit]="wheelsVariables[1].unit"></cae-numeric-input>
+    </div>
+    <div class="form-group">
+      <label>{{ wheelsVariables[2].description }}</label>
+      <cae-numeric-input
+        [name]="wheelsVariables[2].name"
+        [(variable)]="wheelsVariables[2].value"
+        [unit]="wheelsVariables[2].unit"></cae-numeric-input>
+    </div>
+    <div style="text-align: center;">{{ wheelsVariables[3].description }} ({{ wheelsVariables[3].name }} [%])</div>
+    <div class="row">
+      <cae-knob-input
+        class="knob"
+        [name]="wheelsVariables[3].name"
+        [(variable)]="wheelsVariables[3].value"
+        [max]="100"
+        [min]="0"
+        [step]="0.1"></cae-knob-input>
+    </div>
+  </cae-paragraph>
+</cae-paragraph>

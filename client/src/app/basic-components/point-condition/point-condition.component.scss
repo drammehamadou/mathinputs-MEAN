@@ -1,0 +1,54 @@
+.wrapper {
+  padding: 8px;
+  border: 1px solid #e5e5e5;
+  margin: 4px;
+  box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.05);
+
+  &:hover {
+    background: #f5f5f5;
+  }
+}
+
+.row {
+  margin: 0 !important;
+}
+
+.condition {
+  overflow-x: auto;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+}
+
+.text {
+  line-height: 38px;
+  color: #4e4e4e;
+  margin-top: 22px;
+}
+
+.title {
+  line-height: 38px;
+  margin-left: 10px;
+}
+
+.name {
+  height: 12px;
+  font-size: 12px;
+}
+
+.index {
+  line-height: 38px;
+  font-size: 14px;
+  text-decoration: underline;
+  cursor: pointer;
+
+  &:hover {
+    color: #1993ff;
+  }
+}
+
+.icon {
+  margin-top: 8px;
+  margin-right: 10px;
+  width: 24px;
+  height: 24px;
+}

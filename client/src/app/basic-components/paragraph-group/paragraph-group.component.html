@@ -1,0 +1,7 @@
+<div class="group-container" [ngClass]="{'vertical': vertical}">
+  <cae-paragraph *ngFor="let i of getRange()"
+                 [title]="getTitle(i)"
+                 [name]="getName(i)">
+    <cae-dynamic-component [component]="component" [params]="params"></cae-dynamic-component>
+  </cae-paragraph>
+</div>

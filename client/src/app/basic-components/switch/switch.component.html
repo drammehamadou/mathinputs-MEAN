@@ -1,0 +1,14 @@
+<div class="btn-group btn-group-toggle switch" data-toggle="buttons">
+  <label class="btn btn-sm btn-outline-primary" [ngClass]="{'active': value}">
+    <input type="radio" name="options" id="option1"
+           [value]="true"
+           [checked]="value"
+           (click)="changeValue()"> {{ onLabel }}
+  </label>
+  <label class="btn btn-sm btn-outline-primary" [ngClass]="{'active': !value}">
+    <input type="radio" name="options" id="option2"
+           [value]="false"
+           [checked]="!value"
+           (click)="changeValue()"> {{ offLabel }}
+  </label>
+</div>

@@ -1,0 +1,72 @@
+<cae-paragraph title="Basic Envelope" name="be">
+  <div class="form-group">
+    <label>Mass</label>
+    <div><b>GRAD</b></div>
+  </div>
+  <div class="form-group">
+    <label>Maximum Speed</label>
+    <cae-numeric-input
+      [variable]="100"
+      [unit]="'km/h'"
+      [readOnly]="true"></cae-numeric-input>
+  </div>
+  <div class="form-group">
+    <label>Maximum Incline</label>
+    <cae-numeric-input
+      [variable]="33"
+      [unit]="'degrees'"
+      [readOnly]="true"></cae-numeric-input>
+  </div>
+  <div class="form-group">
+    <label>Launch Acceleration</label>
+    <cae-numeric-input
+      [variable]="3"
+      [unit]="'ms-2'"
+      [readOnly]="true"></cae-numeric-input>
+  </div>
+  <div class="row">
+    <cae-paragraph class="col-5" title="Required Power" name="rp">
+      <div class="form-group">
+        <label>Max Speed</label>
+        <cae-numeric-input
+          [variable]="22.2"
+          [unit]="'kW'"
+          [readOnly]="true"></cae-numeric-input>
+      </div>
+      <div class="form-group">
+        <label>Max Incline</label>
+        <cae-numeric-input
+          [variable]="30.7"
+          [readOnly]="true"></cae-numeric-input>
+      </div>
+      <div class="form-group">
+        <label>Launch Acceleration</label>
+        <cae-numeric-input
+          [variable]="30.0"
+          [readOnly]="true"></cae-numeric-input>
+      </div>
+    </cae-paragraph>
+    <cae-paragraph class="col-5" title="Template Motor" name="tm">
+      <div class="form-group">
+        <label>Motor Type</label>
+        <div><b>Synchronous</b></div>
+      </div>
+      <div class="form-group">
+        <label>Motor Power</label>
+        <cae-numeric-input
+          [variable]="50"
+          [unit]="'kW'"
+          [readOnly]="true"></cae-numeric-input>
+      </div>
+    </cae-paragraph>
+  </div>
+  <div class="chart">
+    <cae-chart type="scatter"
+               [x]="[1, 2, 3]"
+               [y]="[3600, 3700, 300]"
+               xUnit="rpm"
+               yUnit="Nm"
+               xLabel="Wheel Speed"
+               yLabel="Torque at Wheel"></cae-chart>
+  </div>
+</cae-paragraph>

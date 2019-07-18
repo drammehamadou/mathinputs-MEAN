@@ -1,0 +1,71 @@
+<div class="wrapper">
+  <div class="row">
+    <img *ngIf="passed" class="icon"
+         src="/assets/icons/check-icon.png"
+         title="Condition passed">
+    <img *ngIf="!passed" class="icon"
+         src="/assets/icons/error-icon.png"
+         title="Condition failed">
+    <span class="index" (click)="openDetails()">{{ index }}</span>
+    <label class="title">{{ title }}</label>
+  </div>
+  <div class="row condition">
+    <div class="col-md-4">
+      <span class="name">Acceleration</span>
+      <div class="numeric-input input-group">
+        <input title="Number Input" type="number" class="form-control"
+               [(ngModel)]="acceleration">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" type="button">m/s^2</button>
+        </div>
+      </div>
+    </div>
+    <span class="text">at</span>
+    <div class="col-md-4">
+      <span class="name">Speed</span>
+      <div class="numeric-input input-group">
+        <input title="Number Input" type="number" class="form-control"
+               [(ngModel)]="speed">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" type="button">km/h</button>
+        </div>
+      </div>
+    </div>
+    <span class="text">up</span>
+    <div class="col-md-4">
+      <span class="name">Gradient</span>
+      <div class="numeric-input input-group">
+        <input title="Number Input" type="number" class="form-control"
+               [(ngModel)]="gradient">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" type="button">%</button>
+        </div>
+      </div>
+    </div>
+    <span class="text">against</span>
+    <div class="col-md-4">
+      <span class="name">Headwind</span>
+      <div class="numeric-input input-group">
+        <input title="Number Input" type="number" class="form-control"
+               [(ngModel)]="headwind">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" type="button">m/s</button>
+        </div>
+      </div>
+    </div>
+    <span class="text">at</span>
+    <div class="col-md-5">
+      <span class="name">Mass</span>
+      <div class="numeric-input input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">{{ massType }}</span>
+        </div>
+        <input title="Number Input" type="number" class="form-control"
+               [(ngModel)]="mass">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" type="button">kg</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

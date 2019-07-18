@@ -1,0 +1,18 @@
+<div class="dropdown" ngbDropdown>
+  <button class="btn btn-secondary dropdown-toggle"
+          type="button"
+          id="{{dropdownId}}"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+          ngbDropdownToggle>
+    {{ value || 'Please select value' }}
+  </button>
+  <div class="dropdown-menu"
+       [attr.aria-labelledby]="dropdownId"
+       ngbDropdownMenu>
+    <a class="dropdown-item"
+       *ngFor="let val of values"
+       (click)="selectValue(val)">{{ val }}</a>
+  </div>
+</div>

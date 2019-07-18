@@ -1,0 +1,55 @@
+<div class="modal-header">
+  <h5 class="modal-title">{{ index }} - {{ title }}</h5>
+  <button type="button" class="close"
+          data-dismiss="modal" aria-label="Close"
+          (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <span>Operating mode</span>
+  <table class="mode mb-4">
+    <tr class="mode-row">
+      <th>Name</th>
+      <th>Enabled</th>
+      <th>Status</th>
+    </tr>
+    <tr class="mode-row">
+      <td class="mode-name">EV</td>
+      <td>Yes</td>
+      <td class="mode-status-pass">Pass</td>
+    </tr>
+    <tr class="mode-row">
+      <td class="mode-name">Combined</td>
+      <td>Yes</td>
+      <td class="mode-status-pass">Pass</td>
+    </tr>
+    <tr class="mode-row">
+      <td class="mode-name">ICE</td>
+      <td>No</td>
+      <td>N/A</td>
+    </tr>
+  </table>
+  <div class="form-group">
+    <span>Calculated results</span>
+    <cae-numeric-input
+      [name]="'Torque at wheels'"
+      [variable]="270.4"
+      [unit]="'Nm'"
+      [readOnly]="true"></cae-numeric-input>
+    <cae-numeric-input
+      [name]="'Wheel speed'"
+      [variable]="783.4"
+      [unit]="'rpm'"
+      [readOnly]="true"></cae-numeric-input>
+    <cae-numeric-input
+      [name]="'Power'"
+      [variable]="22.2"
+      [unit]="'kW'"
+      [readOnly]="true"></cae-numeric-input>
+  </div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-primary"
+          (click)="activeModal.close('Close click')">Close</button>
+</div>

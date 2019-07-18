@@ -1,0 +1,21 @@
+.motors {
+  display: flex;
+  flex-direction: row;
+  flex: 1 1 auto;
+
+  cae-paragraph {
+    width: 100%;
+  }
+}
+
+.paragraph-group {
+  width: 100%;
+}
+
+.knob {
+  width: 150px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px
+}

@@ -1,0 +1,34 @@
+.mode {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mode-row > td, th {
+    padding: 8px;
+}
+
+.category-name {
+  display: block;
+  font-size: 13px;
+  font-weight: 900;
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+
+th {
+  font-size: 12px;
+  font-weight: 900;
+  color: #7f7f7f;
+}
+
+.mode-name {
+  background: #f8f8f8;
+}
+
+.mode-enabled {
+}
+
+.mode-status-pass {
+  background: rgba(32, 255, 80, 0.24);
+  color: #267836;
+}

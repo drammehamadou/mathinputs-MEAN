@@ -1,0 +1,9 @@
+<input title="Expression Input" type="text" class="form-control"
+       caeExpressionValidator
+       #expr="ngModel"
+       (ngModelChange)="onExpressionChange($event)"
+       [ngModel]="expression"
+       [readonly]="readOnly">
+<div class="invalid-feedback" *ngIf="expr.errors?.wrongExpression">
+  {{ expr.errors?.wrongExpression.message }}
+</div>

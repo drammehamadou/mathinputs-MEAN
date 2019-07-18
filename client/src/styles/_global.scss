@@ -1,0 +1,20 @@
+* {
+  outline: none;
+}
+
+.input-group-append > button {
+  height: calc(2.25rem + 2px);
+  padding: 5px 15px;
+}
+
+.input-group-prepend {
+  border-right: 1px solid #ced4da;
+}
+
+.input-group > .input-group-prepend {
+  flex: 0 0 15%;
+}
+
+.input-group .input-group-text {
+  width: 100%;
+}

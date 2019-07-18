@@ -1,0 +1,86 @@
+<cae-paragraph [name]="'ev'" title="Electric vehicle calculations">
+  <div class="form-group">
+    <cae-svg [path]="svgPath"
+             [events]="svgEvent.asObservable()"
+             (elementClicked)="onElementClicked($event)"></cae-svg>
+    <div class="row mt-2">
+      <div class="col-md-6 col-xxl-4">
+        <ul class="list-group list-group-lines">
+          <li class="list-group-item d-flex align-items-center boxed">
+            <cae-checkbox [value]="false" (valueChange)="onChange('frontMotor', $event)"> Front motor</cae-checkbox>
+          </li>
+          <li class="list-group-item d-flex align-items-center">
+            <cae-checkbox [value]="true" (valueChange)="onChange('wheelMotors', $event)"> Wheel motors</cae-checkbox>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-6 col-xxl-4">
+        <ul class="list-group list-group-lines">
+          <li class="list-group-item d-flex align-items-center">
+            <cae-checkbox [value]="true" (valueChange)="onChange('frontWheelMotors', $event)"> Front wheel motors</cae-checkbox>
+          </li>
+          <li class="list-group-item d-flex align-items-center">
+            <cae-checkbox [value]="true" (valueChange)="onChange('backWheelMotors', $event)"> Back wheel motors</cae-checkbox>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="row mt-2">
+      <div class="col-md-6 col-xxl-4">
+        <ul class="list-group list-group-lines">
+          <li class="list-group-item d-flex align-items-center boxed">
+            <cae-checkbox [value]="true" (valueChange)="onChange('backLeftWheelMotor', $event)"> Back left wheel motor</cae-checkbox>
+          </li>
+          <li class="list-group-item d-flex align-items-center">
+            <cae-checkbox [value]="true" (valueChange)="onChange('backRightWheelMotor', $event)"> Back right wheel motor</cae-checkbox>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-6 col-xxl-4">
+        <ul class="list-group list-group-lines">
+          <li class="list-group-item d-flex align-items-center">
+            <cae-checkbox [value]="true" (valueChange)="onChange('frontLeftWheelMotor', $event)"> Front left wheel motor</cae-checkbox>
+          </li>
+          <li class="list-group-item d-flex align-items-center">
+            <cae-checkbox [value]="true" (valueChange)="onChange('frontRightWheelMotor', $event)"> Front right wheel motor</cae-checkbox>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="form-group col-8">
+    <label>Vehicle mass</label>
+    <cae-numeric-input [(variable)]="variables[0].value"
+                       [unit]="variables[0].unit"
+                       [units]="massUnits"></cae-numeric-input>
+  </div>
+  <div class="form-group col-8">
+    <label>Average efficiency</label>
+    <cae-expression-input [expression]="expression"
+                          [readOnly]="true"></cae-expression-input>
+    <div>= {{ result || 'n/a' }}</div>
+  </div>
+  <div class="form-group col-3">
+    <label for="motorSelect">Number of motors</label>
+    <select class="form-control"
+            id="motorSelect"
+            [(ngModel)]="numberOfMotors">
+      <option [value]="0">0</option>
+      <option [value]="1">1</option>
+      <option [value]="2">2</option>
+      <option [value]="3">3</option>
+      <option [value]="4">4</option>
+    </select>
+  </div>
+  <div class="row pl-4 pr-4">
+    <cae-paragraph-group class="paragraph-group"
+                         [size]="numberOfMotors"
+                         [component]="Cmpt"
+                         [params]="params"
+                         (localScopeChange)="onEvaluate($event)"
+                         [vertical]="true"
+                         [name]="motorsName"
+                         subTitle="Motor"></cae-paragraph-group>
+  </div>
+</cae-paragraph>

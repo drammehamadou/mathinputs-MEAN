@@ -1,0 +1,8 @@
+<li class="nav-item">
+  <a class="nav-link" [ngClass]="visible? 'active' : ''" href="{{getLink()}}">{{ node.instance.title }}</a>
+  <ul class="nav flex-column toc">
+    <cae-table-of-contents-group
+      *ngFor="let n of node.children"
+      [node]="n"></cae-table-of-contents-group>
+  </ul>
+</li>
