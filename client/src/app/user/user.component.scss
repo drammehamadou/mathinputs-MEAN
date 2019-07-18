@@ -1,0 +1,15 @@
+body,
+html {
+  height: 100%;
+}
+
+.bg {
+  /* The image used */
+  background-image: url("https://www.mercedes-benz.com/wp-content/uploads/sites/3/2016/09/mbcom_powertrain_antriebsstrang_v06_srgb-1_2560x1440v2-2560x1440.jpg");
+  /* Full height */
+  height: 100%;
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
